@@ -7,8 +7,13 @@ set(addon_name ngs_mumps)
 project(${addon_name})
 include(ngsolve_addon.cmake)
 
+link_directories (AFTER MUMPS_5.7.3/lib)
+
 # change the source file arguments to your source files
 add_ngsolve_addon(${addon_name} src/mumpsinverse.cpp src/ngsMumps.cpp)
+
+include_directories (AFTER MUMPS_5.7.3/include)
+
 
 # install the compiled python module and __init__.py ( don't change this )
 install(TARGETS ${addon_name} DESTINATION ${addon_name})
@@ -38,3 +43,6 @@ install(DIRECTORY ${stubgen_directory} DESTINATION ${addon_name})
 #
 # target_link_libraries(${addon_name} PRIVATE HYPRE)
 # set_target_properties(HYPRE PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+
+target_link_libraries(${addon_name} PRIVATE dmumps mumps_common pord gfortran)

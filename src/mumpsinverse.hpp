@@ -8,10 +8,10 @@
 /* *************************************************************************/
 
 /*
-namespace ngparallel
-{
+  namespace ngparallel
+  {
   class ParallelDofs;
-}
+  }
 */
 
 namespace ngla
@@ -21,7 +21,7 @@ namespace ngla
     interface to the sparse direct solver Mumps 
   */
 
-#ifdef USE_MUMPS
+
 #define OMPI_SKIP_MPICXX
 #include "dmumps_c.h"
 #include "zmumps_c.h"
@@ -158,10 +158,10 @@ namespace ngla
     virtual AutoVector CreateRowVector () const;
     virtual AutoVector CreateColVector () const;
     /*
-    {
+      {
       return new ParallelVVector<TV> (height, paralleldofs);
       // return new VVector<TV> (height);
-    }
+      }
     */
 
   private:
@@ -170,13 +170,6 @@ namespace ngla
       mumps_trait<TSCAL>::MumpsFunction (&mumps_id);
     }
   };
-
-
-
-
-
-#endif
-
 
 
 

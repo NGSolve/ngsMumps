@@ -5,7 +5,6 @@
 /* *************************************************************************/
 
 // #define DEBUG
-#ifdef USE_MUMPS
 
 #include <la.hpp>
 #include "mumpsinverse.hpp"
@@ -1114,11 +1113,4 @@ namespace ngla
 
 
 
-
-
-
-
-
-
-#endif
 
