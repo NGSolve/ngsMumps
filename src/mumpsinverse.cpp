@@ -4,13 +4,11 @@
 /* Date:   May. 2009                                                       */
 /* *************************************************************************/
 
-// #define DEBUG
 
 #include <la.hpp>
-#include "mumpsinverse.hpp"
-
 #include <comp.hpp>
-// #include <parallelngs.hpp>
+
+#include "mumpsinverse.hpp"
 
 namespace ngla
 {
@@ -22,8 +20,6 @@ namespace ngla
 #define JOB_ANALYSIS 1
 #define JOB_FACTOR 2
 #define JOB_SOLVE 3
-
-#define USE_COMM_WORLD -987654
 
   
   template <class TM, class TV_ROW, class TV_COL>
@@ -957,26 +953,6 @@ namespace ngla
   {
     return make_unique<ParallelVVector<TV>> (paralleldofs->GetNDofLocal(), paralleldofs);
   }
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-
-
-
 
 
 

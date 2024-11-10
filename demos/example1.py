@@ -22,7 +22,7 @@ f = LinearForm(1*v*dx).Assemble()
 
 gfu = GridFunction(fes)
 
-inv = a.mat.Inverse(freedofs=fes.FreeDofs(), inverse="masterinverse")
+inv = a.mat.Inverse(freedofs=fes.FreeDofs(), inverse="mumps")
 gfu.vec.data = inv * f.vec
 
 printonce("ip = ", InnerProduct(gfu.vec, f.vec))

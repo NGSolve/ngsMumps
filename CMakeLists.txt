@@ -14,7 +14,6 @@ add_ngsolve_addon(${addon_name} src/mumpsinverse.cpp src/ngsMumps.cpp)
 
 include_directories (AFTER MUMPS_5.7.3/include)
 
-
 # install the compiled python module and __init__.py ( don't change this )
 install(TARGETS ${addon_name} DESTINATION ${addon_name})
 install(FILES src/__init__.py DESTINATION ${addon_name})
@@ -24,8 +23,8 @@ install(FILES demos/example1.py DESTINATION ${addon_name}/demos)
 
 # generate stub files for autocomplete in IDEs
 # this must be done at the very end (such that the stubgen generation happens after the python modules are installed)
-install(CODE ${stubgen_generation_code})
-install(DIRECTORY ${stubgen_directory} DESTINATION ${addon_name})
+# install(CODE ${stubgen_generation_code})
+# install(DIRECTORY ${stubgen_directory} DESTINATION ${addon_name})
 
 # include(FetchContent)
 # FetchContent_Declare(hypre
@@ -45,4 +44,5 @@ install(DIRECTORY ${stubgen_directory} DESTINATION ${addon_name})
 # set_target_properties(HYPRE PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 
-target_link_libraries(${addon_name} PRIVATE dmumps mumps_common pord gfortran)
+target_link_libraries(${addon_name} PUBLIC dmumps zmumps mumps_common)
+# pord gfortran)
