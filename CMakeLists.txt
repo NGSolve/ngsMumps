@@ -6,6 +6,7 @@ set(addon_name ngs_mumps)
 
 project(${addon_name})
 include(ngsolve_addon.cmake)
+message("NEW INSTALL DIR ${CMAKE_INSTALL_PREFIX}")
 
 # link_directories (AFTER MUMPS_5.7.3/lib)
 link_directories (AFTER /usr/local/lib)
