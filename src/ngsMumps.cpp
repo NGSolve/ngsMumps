@@ -6,7 +6,8 @@
 
 using namespace ngla;
 
-shared_ptr<BaseMatrix> CreateInverse (shared_ptr<BaseMatrix> mat, shared_ptr<BitArray> freedofs)
+shared_ptr<BaseMatrix> CreateInverse (shared_ptr<BaseMatrix> mat, shared_ptr<BitArray> freedofs,
+                                      shared_ptr<const Array<int>> clusters)
 {
   cout << IM(0) << "create mumps inverse" << endl;
 
@@ -16,13 +17,13 @@ shared_ptr<BaseMatrix> CreateInverse (shared_ptr<BaseMatrix> mat, shared_ptr<Bit
       auto locmat = dynamic_pointer_cast<BaseSparseMatrix> (parmat->GetMatrix());
       
       return make_shared<ParallelMumpsInverse<double>>(*locmat,
-                                                       freedofs, nullptr, pardofs, false);
+                                                       freedofs, clusters, pardofs, false);
     }
 
   if (auto sparsemat = dynamic_pointer_cast<SparseMatrix<double>> (mat))
     {
       return make_shared<MumpsInverse<double>>(*sparsemat,
-                                               freedofs, nullptr, false);
+                                               freedofs, clusters, false);
     }
   throw Exception("mumpsinverse - don't know how to invert matrix of type ",
                   typeid(*mat).name());
