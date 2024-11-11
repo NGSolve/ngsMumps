@@ -29,6 +29,7 @@ install(FILES demos/example1.py DESTINATION ${addon_name}/demos)
 
 
 include(FetchContent)
+set(BUILD_COMPLEX16 ON)
 FetchContent_Declare(mumps
   GIT_REPOSITORY https://github.com/scivision/mumps.git 
   GIT_TAG main
